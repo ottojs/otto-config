@@ -4,7 +4,7 @@
   "repository" : "https://github.com/ottojs/otto-config.git",
   "main" : "./lib/index.js",
   "dependencies" : {
-    "morgan"          : "1.2.0",
+    "morgan"          : "1.2.2",
     "body-parser"     : "1.5.0",
     "method-override" : "2.1.2"
   },
