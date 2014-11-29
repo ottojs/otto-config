@@ -98,7 +98,7 @@ describe('Config', function () {
 
     describe('logger', function () {
 
-      it('should not run a logger in DEFAULT environment', function () {
+      it('should not run a logger at all in DEFAULT environment', function () {
 
         var called = false;
         config.global({
@@ -114,7 +114,7 @@ describe('Config', function () {
 
       });
 
-      it('should run a logger in DEVELOPMENT environment', function () {
+      it('should not run a logger by default in DEVELOPMENT environment', function () {
 
         var called = false;
         config.global({
@@ -125,6 +125,22 @@ describe('Config', function () {
             }
           }
         }, { NODE_ENV : 'DEVELOPMENT' });
+
+        called.should.equal(false);
+
+      });
+
+      it('should run a logger when asked in DEVELOPMENT environment', function () {
+
+        var called = false;
+        config.global({
+          set : function () {},
+          use : function (middleware) {
+            if (function_name(middleware) === 'logger') {
+              called = true;
+            }
+          }
+        }, { NODE_ENV : 'DEVELOPMENT' }, { logging : true });
 
         called.should.equal(true);
 
