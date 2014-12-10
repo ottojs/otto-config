@@ -96,6 +96,68 @@ describe('Config', function () {
 
     });
 
+    describe('views', function () {
+
+      it('should not use views by default', function () {
+        var settings = {};
+        config.global({
+          use : function () {},
+          set : function (key, value) {
+            settings[key] = value;
+          }
+        }, {}, {});
+        settings.should.not.have.property('view engine');
+        settings.should.not.have.property('views');
+      });
+
+      it('should use the provided path for the views', function () {
+        var settings = {};
+        config.global({
+          use : function () {},
+          set : function (key, value) {
+            settings[key] = value;
+          }
+        }, {}, {
+          views : {
+            path : '/path/to/views'
+          }
+        });
+        settings.should.have.property('views').and.equal('/path/to/views');
+      });
+
+      it('should use ejs as the default view engine type', function () {
+        var settings = {};
+        config.global({
+          use : function () {},
+          set : function (key, value) {
+            settings[key] = value;
+          }
+        }, {}, {
+          views : {
+            path : '/path/to/views'
+          }
+        });
+        settings.should.have.property('view engine').and.equal('ejs');
+      });
+
+      it('should use a custom engine when provided', function () {
+        var settings = {};
+        config.global({
+          use : function () {},
+          set : function (key, value) {
+            settings[key] = value;
+          }
+        }, {}, {
+          views : {
+            type : 'custom',
+            path : '/path/to/views'
+          }
+        });
+        settings.should.have.property('view engine').and.equal('custom');
+      });
+
+    });
+
     describe('logger', function () {
 
       it('should not run a logger at all in DEFAULT environment', function () {
