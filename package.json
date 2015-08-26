@@ -6,7 +6,8 @@
   "dependencies" : {
     "morgan"          : "1.6.1",
     "body-parser"     : "1.13.3",
-    "method-override" : "2.3.5"
+    "method-override" : "2.3.5",
+    "ejs"             : "2.3.3"
   },
   "devDependencies" : {
     "jshint"   : "2.8.0",
