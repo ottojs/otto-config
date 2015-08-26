@@ -1,6 +1,6 @@
 {
   "name" : "otto-config",
-  "version" : "0.1.1",
+  "version" : "0.2.0",
   "repository" : "https://github.com/ottojs/otto-config.git",
   "main" : "./lib/index.js",
   "dependencies" : {
